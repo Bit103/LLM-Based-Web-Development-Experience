@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Personal Website</title>
   <style>
-    /* ===== Global Reset & Base ===== */
     * {
       margin: 0;
       padding: 0;
@@ -13,195 +12,161 @@
     }
 
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
       color: #333;
-      background-color: #f4f6fb;
-      scroll-behavior: smooth;
     }
 
-    /* ===== Navigation Bar ===== */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 1000;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      border-radius: 0 0 50px 50px;
-      padding: 8px 20px;
-      box-shadow: 0 4px 20px rgba(102, 126, 234, 0.35);
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 25px;
-      align-items: center;
-    }
-
-    nav ul li a {
-      text-decoration: none;
-      color: #fff;
-      font-size: 15px;
-      font-weight: 600;
-      padding: 6px 14px;
-      border-radius: 30px;
-      transition: background 0.3s ease, transform 0.2s ease;
-    }
-
-    nav ul li a:hover {
-      background: rgba(255, 255, 255, 0.2);
-      transform: translateY(-2px);
-    }
-
-    /* ===== Rolling Text Banner ===== */
-    .rolling-text {
-      background: linear-gradient(135deg, #ff6347, #ff8c42, #ff6347);
-      background-size: 200% 100%;
-      color: #fff;
-      text-align: center;
-      padding: 12px 0;
-      overflow: hidden;
-      white-space: nowrap;
-      position: fixed;
-      top: 50px;
-      left: 0;
-      width: 100%;
-      z-index: 999;
-      box-shadow: 0 2px 15px rgba(255, 99, 71, 0.3);
-      animation: gradient-shift 3s ease infinite;
-    }
-
-    @keyframes gradient-shift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    .rolling-text span {
-      display: inline-block;
-      animation: roll-left 20s linear infinite;
-      font-size: 15px;
-      font-weight: bold;
-      letter-spacing: 0.5px;
-      padding-left: 100%;
-    }
-
-    @keyframes roll-left {
-      0% {
-        transform: translateX(0);
-      }
-      100% {
-        transform: translateX(-100%);
-      }
-    }
-
-    /* ===== Hero Section ===== */
-    .hero {
-      margin-top: 100px;
-      min-height: 85vh;
+    .intro-page {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      height: 100vh;
       text-align: center;
-      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-      position: relative;
-      padding: 40px 20px;
+      background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet, red);
+      background-size: 800% 800%;
+      animation: rainbowBg 10s ease infinite;
+      color: white;
+      animation: fadeIn 1s ease-in-out, rainbowBg 10s ease infinite;
     }
 
-    .hero::before {
-      content: '';
-      position: absolute;
-      width: 250px;
-      height: 250px;
-      background: radial-gradient(circle, rgba(102, 126, 234, 0.15) 0%, transparent 70%);
-      border-radius: 50%;
-      top: 50px;
-      right: 10%;
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    .hero::after {
-      content: '';
-      position: absolute;
-      width: 300px;
-      height: 300px;
-      background: radial-gradient(circle, rgba(118, 75, 162, 0.12) 0%, transparent 70%);
-      border-radius: 50%;
-      bottom: 30px;
-      left: 8%;
+    @keyframes rainbowBg {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
     }
 
-    .hero h1 {
+    .intro-page h1 {
       font-size: 3rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 15px;
-      position: relative;
-      z-index: 1;
+      margin-bottom: 10px;
+      letter-spacing: 2px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     }
 
-    .hero p {
-      font-size: 1.25rem;
-      color: #555;
-      font-weight: 500;
-      position: relative;
-      z-index: 1;
+    .intro-page p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      color: #bdc3c7;
+      max-width: 500px;
+      line-height: 1.6;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
     }
 
-    /* ===== Responsive ===== */
+    .intro-page a {
+      padding: 12px 30px;
+      background-color: #e74c3c;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 1.1rem;
+      transition: background-color 0.3s, transform 0.3s;
+      display: inline-block;
+    }
+
+    .intro-page a:hover {
+      background-color: #c0392b;
+      transform: scale(1.05);
+    }
+
+    .dynamic-text {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      color: #bdc3c7;
+      max-width: 500px;
+      line-height: 1.6;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+      min-height: 1.6em;
+    }
+
+    .dynamic-text span {
+      border-right: 2px solid #bdc3c7;
+      animation: blink 0.75s step-end infinite;
+    }
+
+    @keyframes blink {
+      50% {
+        border-color: transparent;
+      }
+    }
+
     @media (max-width: 600px) {
-      nav ul {
-        gap: 10px;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-
-      nav ul li a {
-        font-size: 13px;
-        padding: 5px 10px;
-      }
-
-      .hero h1 {
+      .intro-page h1 {
         font-size: 2rem;
       }
 
-      .hero p {
+      .dynamic-text {
         font-size: 1rem;
-      }
-
-      .rolling-text {
-        top: 58px;
+        padding: 0 20px;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Navigation Bar -->
-  <nav>
-    <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
-
-  <!-- Rolling Text Banner -->
-  <div class="rolling-text">
-    <span>🚀 Welcome to My Personal Website! 🌐 Discover my projects, skills, and more! 🔥</span>
+  <div class="intro-page">
+    <h1 id="mainHeading">Welcome to My Website</h1>
+    <p id="dynamicText"></p>
+    <a href="#">Get Started</a>
   </div>
 
-  <!-- Hero Section -->
-  <section class="hero" id="home">
-    <h1>Hi, I'm [Your Name]</h1>
-    <p>A web developer from [Your City]</p>
-  </section>
+  <script>
+    const messages = [
+      "This is a personal website showcasing my work and interests.",
+      "I love creating beautiful things on the web.",
+      "Here you'll find my latest projects and ideas.",
+      "Welcome to my little corner of the internet!"
+    ];
 
-  <script src="http://localhost:35729/livereload.js"></script>
+    let messageIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    const typedElement = document.getElementById("dynamicText");
+
+    function typeMessage() {
+      const currentMessage = messages[messageIndex];
+
+      if (isDeleting) {
+        typedElement.textContent = currentMessage.substring(0, charIndex - 1);
+        charIndex--;
+      } else {
+        typedElement.textContent = currentMessage.substring(0, charIndex + 1);
+        charIndex++;
+      }
+
+      if (!isDeleting && charIndex === currentMessage.length) {
+        setTimeout(() => {
+          isDeleting = true;
+        }, 2000);
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        messageIndex = (messageIndex + 1) % messages.length;
+      }
+
+      let speed = isDeleting ? 50 : 100;
+      setTimeout(typeMessage, speed);
+    }
+
+    setTimeout(typeMessage, 1000);
+  </script>
+
+  <script src="http://localhost:5500/livereload.js"></script>
 </body>
 </html>

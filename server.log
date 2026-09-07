@@ -1,0 +1,22 @@
+[I 260907 20:31:45 server:331] Serving on http://127.0.0.1:5500
+[I 260907 20:31:45 handlers:62] Start watching changes
+[I 260907 20:31:45 handlers:64] Start detecting changes
+[I 260907 20:31:46 handlers:135] Browser Connected: http://localhost:5500/
+[I 260907 20:31:47 handlers:135] Browser Connected: http://localhost:5500/
+[I 260907 20:31:47 handlers:82] Ignore: style.css
+[I 260907 20:31:48 handlers:135] Browser Connected: http://localhost:5500/
+[I 260907 20:31:48 handlers:135] Browser Connected: http://localhost:5500/
+[I 260907 20:31:48 handlers:92] Reload 4 waiters: None
+[I 260907 20:31:49 handlers:135] Browser Connected: http://localhost:5500/
+[I 260907 20:31:49 handlers:135] Browser Connected: http://localhost:5500/
+[I 260907 20:31:49 handlers:135] Browser Connected: http://localhost:5500/
+[I 260907 20:31:49 handlers:135] Browser Connected: http://localhost:5500/
+[I 260907 20:32:12 handlers:92] Reload 4 waiters: style.css
+[I 260907 20:32:14 handlers:135] Browser Connected: http://localhost:5500/
+[I 260907 20:32:14 handlers:135] Browser Connected: http://localhost:5500/
+[I 260907 20:33:09 handlers:92] Reload 4 waiters: index.html
+[I 260907 20:33:09 handlers:135] Browser Connected: http://localhost:5500/
+[I 260907 20:33:09 handlers:135] Browser Connected: http://localhost:5500/
+[I 260907 20:33:09 handlers:135] Browser Connected: http://localhost:5500/
+[I 260907 20:33:09 handlers:135] Browser Connected: http://localhost:5500/
+[I 260907 20:34:06 server:358] Shutting down...

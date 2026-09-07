@@ -10,16 +10,14 @@ def main():
 
     editor_script = base_dir / "editor.py"
     server_script = base_dir / "website_details" / "server_loader.py"
-    log_file = base_dir / "server.log"
 
-    print("Starting server_loader.py (logging to server.log)...")
-
-    with open(log_file, "a", encoding="utf-8") as f:
-        server_process = subprocess.Popen(
-            [python_exe, str(server_script)],
-            stdout=f,
-            stderr=f
-        )
+    print("Starting server_loader.py in a detached process...")
+    # CREATE_NEW_CONSOLE opens server in its own clean window on Windows,
+    # preventing main process stream-locking completely.
+    server_process = subprocess.Popen(
+        [python_exe, str(server_script)],
+        creationflags=subprocess.CREATE_NEW_CONSOLE
+    )
 
     print("Starting editor.py...")
     editor_process = subprocess.Popen([python_exe, str(editor_script)])
@@ -34,7 +32,6 @@ def main():
         print("\nStopping processes...")
         server_process.terminate()
         editor_process.terminate()
-        print("Done.")
 
 if __name__ == "__main__":
     main()
