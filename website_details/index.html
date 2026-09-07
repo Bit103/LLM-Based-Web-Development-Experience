@@ -1,256 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My First Webpage</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Website</title>
+  <style>
+    /* ===== Global Reset & Base ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 40px 20px;
-        }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #333;
+      background-color: #f4f6fb;
+      scroll-behavior: smooth;
+    }
 
-        .container {
-            max-width: 800px;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            padding: 50px 60px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
-        }
+    /* ===== Navigation Bar ===== */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 0 0 50px 50px;
+      padding: 8px 20px;
+      box-shadow: 0 4px 20px rgba(102, 126, 234, 0.35);
+    }
 
-        h1 {
-            font-size: 2.8em;
-            color: #333;
-            text-align: center;
-            margin-bottom: 15px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      align-items: center;
+    }
 
-        .subtitle {
-            text-align: center;
-            color: #888;
-            font-size: 1.1em;
-            margin-bottom: 30px;
-            font-style: italic;
-        }
+    nav ul li a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 30px;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
 
-        h2 {
-            font-size: 1.8em;
-            color: #555;
-            margin-top: 30px;
-            margin-bottom: 12px;
-            padding-left: 15px;
-            border-left: 4px solid #667eea;
-            cursor: pointer;
-            user-select: none;
-            transition: all 0.3s ease;
-        }
+    nav ul li a:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
 
-        h2:hover {
-            color: #667eea;
-        }
+    /* ===== Rolling Text Banner ===== */
+    .rolling-text {
+      background: linear-gradient(135deg, #ff6347, #ff8c42, #ff6347);
+      background-size: 200% 100%;
+      color: #fff;
+      text-align: center;
+      padding: 12px 0;
+      overflow: hidden;
+      white-space: nowrap;
+      position: fixed;
+      top: 50px;
+      left: 0;
+      width: 100%;
+      z-index: 999;
+      box-shadow: 0 2px 15px rgba(255, 99, 71, 0.3);
+      animation: gradient-shift 3s ease infinite;
+    }
 
-        h2::after {
-            content: ' ▼';
-            font-size: 0.6em;
-            color: #888;
-            transition: transform 0.3s ease;
-        }
+    @keyframes gradient-shift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
 
-        h2.open::after {
-            transform: rotate(180deg);
-        }
+    .rolling-text span {
+      display: inline-block;
+      animation: roll-left 20s linear infinite;
+      font-size: 15px;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+      padding-left: 100%;
+    }
 
-        .section-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease, opacity 0.4s ease;
-            opacity: 0;
-        }
+    @keyframes roll-left {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
 
-        .section-content.open {
-            max-height: 800px;
-            opacity: 1;
-        }
+    /* ===== Hero Section ===== */
+    .hero {
+      margin-top: 100px;
+      min-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      position: relative;
+      padding: 40px 20px;
+    }
 
-        p {
-            font-size: 1.05em;
-            line-height: 1.8;
-            color: #555;
-            margin-bottom: 15px;
-        }
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 250px;
+      height: 250px;
+      background: radial-gradient(circle, rgba(102, 126, 234, 0.15) 0%, transparent 70%);
+      border-radius: 50%;
+      top: 50px;
+      right: 10%;
+    }
 
-        strong {
-            color: #764ba2;
-            font-weight: 700;
-        }
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(118, 75, 162, 0.12) 0%, transparent 70%);
+      border-radius: 50%;
+      bottom: 30px;
+      left: 8%;
+    }
 
-        ul {
-            list-style: none;
-            padding: 0;
-            margin: 20px 0;
-        }
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 15px;
+      position: relative;
+      z-index: 1;
+    }
 
-        ul li {
-            padding: 12px 20px;
-            margin: 8px 0;
-            background: linear-gradient(135deg, #f5f7fa, #e4e8ec);
-            border-radius: 10px;
-            color: #444;
-            font-size: 1em;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            overflow: hidden;
-            max-height: 60px;
-            opacity: 0.85;
-        }
+    .hero p {
+      font-size: 1.25rem;
+      color: #555;
+      font-weight: 500;
+      position: relative;
+      z-index: 1;
+    }
 
-        ul li .intro {
-            font-size: 0.85em;
-            color: #888;
-            margin-top: 4px;
-            max-height: 0;
-            opacity: 0;
-            transition: all 0.4s ease;
-        }
+    /* ===== Responsive ===== */
+    @media (max-width: 600px) {
+      nav ul {
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
 
-        ul li:hover {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: #fff;
-            transform: translateX(8px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-            max-height: 200px;
-            opacity: 1;
-            padding: 15px 20px;
-        }
+      nav ul li a {
+        font-size: 13px;
+        padding: 5px 10px;
+      }
 
-        ul li:hover .intro {
-            max-height: 100px;
-            opacity: 1;
-            color: rgba(255, 255, 255, 0.85);
-            margin-top: 8px;
-        }
+      .hero h1 {
+        font-size: 2rem;
+      }
 
-        a {
-            color: #667eea;
-            text-decoration: none;
-            font-weight: 600;
-            border-bottom: 2px solid transparent;
-            transition: all 0.3s ease;
-        }
+      .hero p {
+        font-size: 1rem;
+      }
 
-        a:hover {
-            color: #764ba2;
-            border-bottom-color: #764ba2;
-        }
-
-        @media (max-width: 600px) {
-            .container {
-                padding: 30px 25px;
-            }
-            h1 {
-                font-size: 2em;
-            }
-            h2 {
-                font-size: 1.4em;
-            }
-        }
-    </style>
+      .rolling-text {
+        top: 58px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>Welcome to My Website</h1>
-        <p class="subtitle">A beautiful introduction to the world of web development</p>
+  <!-- Navigation Bar -->
+  <nav>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-        <div class="about-section">
-            <h2>About HTML</h2>
-            <div class="section-content">
-                <p>HTML stands for <strong>HyperText Markup Language</strong>. It is the standard language for creating web pages.</p>
+  <!-- Rolling Text Banner -->
+  <div class="rolling-text">
+    <span>🚀 Welcome to My Personal Website! 🌐 Discover my projects, skills, and more! 🔥</span>
+  </div>
 
-                <ul>
-                    <li>Headings (h1 to h6)<span class="intro"> Used to define section headings and hierarchical structure on a page, ranging from the most important (h1) to the least (h6).</span></li>
-                    <li>Paragraphs (p)<span class="intro"> Used to group and display blocks of text content in a structured, readable format on a webpage.</span></li>
-                    <li>Lists (ul, ol, li)<span class="intro"> Used to organize related items into ordered (numbered) or unordered (bulleted) lists for easy scanning.</span></li>
-                    <li>Links (a)<span class="intro"> Used to create clickable hyperlinks that navigate to other pages, websites, or resources on the internet.</span></li>
-                </ul>
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <h1>Hi, I'm [Your Name]</h1>
+    <p>A web developer from [Your City]</p>
+  </section>
 
-                <p>Visit <a href="https://www.example.com" target="_blank">official website</a> to learn more.</p>
-            </div>
-        </div>
-
-        <div class="about-section">
-            <h2>About CSS</h2>
-            <div class="section-content">
-                <p>CSS stands for <strong>Cascading Style Sheets</strong>. It is used to style and layout web pages, controlling colors, fonts, spacing, and overall visual presentation.</p>
-
-                <ul>
-                    <li>Selectors & Properties<span class="intro"> Selectors target HTML elements to style, while properties define the visual rules like color, size, and spacing applied to them.</span></li>
-                    <li>Flexbox & Grid Layouts<span class="intro"> Powerful layout models that control the alignment, direction, and spacing of elements within a container on a page.</span></li>
-                    <li>Animations & Transitions<span class="intro"> CSS features that add smooth motion effects and visual transformations when elements change state or over time.</span></li>
-                    <li>Responsive Design<span class="intro"> Techniques that ensure web pages look and function well across different screen sizes and devices.</span></li>
-                </ul>
-
-                <p>Visit <a href="https://www.w3schools.com/css/" target="_blank">W3Schools CSS Tutorial</a> to learn more.</p>
-            </div>
-        </div>
-
-        <div class="about-section">
-            <h2>About JavaScript</h2>
-            <div class="section-content">
-                <p>JavaScript is a <strong>programming language</strong> that enables interactive web pages. It is one of the core technologies of the World Wide Web, alongside HTML and CSS. JavaScript allows you to create dynamically updating content, control multimedia, animate images, and pretty much everything else.</p>
-
-                <ul>
-                    <li>Variables & Data Types<span class="intro"> Used to store and manipulate data values such as numbers, strings, booleans, objects, and arrays in memory.</span></li>
-                    <li>Functions & Events<span class="intro"> Blocks of reusable code that perform specific tasks, triggered by user actions like clicks, hovers, or key presses.</span></li>
-                    <li>DOM Manipulation<span class="intro"> The ability to access and modify HTML elements and their content dynamically through the Document Object Model.</span></li>
-                    <li>AJAX & Fetch API<span class="intro"> Techniques to send and receive data from a server asynchronously without reloading the entire web page.</span></li>
-                    <li>ES6 & Modern Syntax<span class="intro"> Modern JavaScript features like arrow functions, destructuring, template literals, and modules that simplify coding.</span></li>
-                </ul>
-
-                <p>Visit <a href="https://www.w3schools.com/js/" target="_blank">W3Schools JavaScript Tutorial</a> to learn more.</p>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        document.querySelectorAll('h2').forEach(function(heading) {
-            heading.addEventListener('click', function() {
-                var content = this.nextElementSibling;
-                var isOpen = content.classList.contains('open');
-
-                // Close all sections
-                document.querySelectorAll('.section-content').forEach(function(sec) {
-                    sec.classList.remove('open');
-                });
-                document.querySelectorAll('h2').forEach(function(h) {
-                    h.classList.remove('open');
-                });
-
-                // Toggle clicked section if it was closed
-                if (!isOpen) {
-                    content.classList.add('open');
-                    this.classList.add('open');
-                }
-            });
-        });
-    </script>
-
+  <script src="http://localhost:35729/livereload.js"></script>
 </body>
 </html>
